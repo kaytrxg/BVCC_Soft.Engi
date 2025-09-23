@@ -56,6 +56,9 @@ const Index = () => {
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
             Upload your dataset and instantly discover insights, visualize trends, and explore your data with interactive charts and analytics.
           </p>
+          <p className="text-sm text-slate-400 mt-2">
+            Built with React, TypeScript, and Tailwind CSS. First time, let's do this!!!!!
+          </p>
         </div>
 
         {/* 🔧 WEEK 2: ADD YOUR PROGRESS COMPONENT HERE! */}
