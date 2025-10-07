@@ -9,7 +9,7 @@
 import { useState } from 'react';
 
 // 🎨 Icon imports - beautiful icons for your UI
-import { Upload, BarChart3, PieChart, TrendingUp, Database } from 'lucide-react';
+import { Upload, FileText, BarChart3, PieChart, TrendingUp, Brain, Zap, Database } from 'lucide-react';
 
 // 🧩 UI Component imports - pre-built components for your interface
 import { Button } from "@/components/ui/button";
@@ -19,8 +19,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import DataUpload from '@/components/DataUpload';
 import Dashboard from '@/components/Dashboard';
 import { DataRow } from '@/types/data';
+// 🆕 WEEK 3: Import NameInput demo
+// import NameInput from '@/components/NameInput';
 
 // 🔧 WEEK 2: Import your UploadProgressSimulator component here
+import UploadProgressSimulator from '@/components/UploadProgressSimulator';
+//import { Upload, FileText, BarChart3, Brain, Zap, Database } from "lucide-react";
+//^^^^was having an error pop up once I added the line above
+
 // 🔧 WEEK 3+: Additional imports will be added as you progress
 
 const Index = () => {
@@ -60,6 +66,10 @@ const Index = () => {
             Built with React, TypeScript, and Tailwind CSS. First time, let's do this!!!!!
           </p>
         </div>
+        {/* 🆕 WEEK 3: Live Event Handling Demo (removed NameInput from homepage) */}
+        {/* <div className="mt-8 mb-8 flex justify-center">
+            <NameInput />
+          </div> */}
 
         {/* 🔧 WEEK 2: ADD YOUR PROGRESS COMPONENT HERE! */}
         {/* This is where students will add their UploadProgressSimulator component */}
@@ -67,6 +77,22 @@ const Index = () => {
         {/* <div className="mb-8">
           <UploadProgressSimulator />
         </div> */}
+        <Card className="bg-white/50 backdrop-blur-sm border-purple-200">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Upload className="mr-3 h-6 w-6 text-purple-600" />
+              Interactive Progress Demo
+            </CardTitle>
+            <CardDescription>
+            Try our upload progress simulator built with React state!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <UploadProgressSimulator />
+          </CardContent>
+        </Card>
+
+
 
         {data.length === 0 ? (
           <>
