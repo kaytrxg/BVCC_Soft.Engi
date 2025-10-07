@@ -24,6 +24,7 @@ import { DataRow } from '@/types/data';
 
 // 🔧 WEEK 2: Import your UploadProgressSimulator component here
 import UploadProgressSimulator from '@/components/UploadProgressSimulator';
+import Week3_Updates from '@/components/My_Week3_Updates';
 //import { Upload, FileText, BarChart3, Brain, Zap, Database } from "lucide-react";
 //^^^^was having an error pop up once I added the line above
 
@@ -41,6 +42,7 @@ const Index = () => {
     setFileName(name);
     console.log('Data loaded:', loadedData.length, 'rows');
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
@@ -77,11 +79,11 @@ const Index = () => {
         {/* <div className="mb-8">
           <UploadProgressSimulator />
         </div> */}
-        <Card className="bg-white/50 backdrop-blur-sm border-purple-200">
+          <Card className="bg-white/50 backdrop-blur-sm border-purple-200">
           <CardHeader>
             <CardTitle className="flex items-center">
               <Upload className="mr-3 h-6 w-6 text-purple-600" />
-              Interactive Progress Demo
+              Week 2 Updates
             </CardTitle>
             <CardDescription>
             Try our upload progress simulator built with React state!
@@ -89,6 +91,7 @@ const Index = () => {
           </CardHeader>
           <CardContent>
             <UploadProgressSimulator />
+            <Week3_Updates />
           </CardContent>
         </Card>
 
