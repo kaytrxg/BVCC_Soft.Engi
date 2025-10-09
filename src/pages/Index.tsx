@@ -24,7 +24,7 @@ import { DataRow } from '@/types/data';
 
 // 🔧 WEEK 2: Import your UploadProgressSimulator component here
 import UploadProgressSimulator from '@/components/UploadProgressSimulator';
-import Week3_Updates from '@/components/My_Week3_Updates';
+import Week3_Updates from '@/components/My_NameInput';
 //import { Upload, FileText, BarChart3, Brain, Zap, Database } from "lucide-react";
 //^^^^was having an error pop up once I added the line above
 
