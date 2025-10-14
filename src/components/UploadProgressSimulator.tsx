@@ -38,7 +38,6 @@ const UploadProgressSimulator = () => {
     setIsUploading(false);
   };
 
-  {/* 
   const addProgress = () => {
     //TODO: Add 25% to current progress
     // Add 25% to current progress, clamp at 100
@@ -48,12 +47,10 @@ const UploadProgressSimulator = () => {
       return next;
     });
   };
-  */}
 
   return (
     <div className="progress-container p-6 bg-white rounded-lg shadow-md max-w-md mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">Week 2 Progression</h2>
-
       {/* 📊 Progress Bar */}
       <div className="mb-4">
         <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
@@ -87,7 +84,7 @@ const UploadProgressSimulator = () => {
           {isUploading ? 'Uploading...' : 'Start Upload'}
         </button>
 
-       {/* <button 
+        <button 
           onClick={addProgress}
           //disabled = {isUploading || progress >= 100} <-- previous, needed to add the Math Class
           disabled={isUploading || Math.round(progress) >= 100}
@@ -95,7 +92,7 @@ const UploadProgressSimulator = () => {
         >
           +25%
         </button>
-        */}
+
         <button 
           onClick={resetProgress}
           disabled={isUploading}

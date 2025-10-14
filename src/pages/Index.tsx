@@ -24,11 +24,13 @@ import { DataRow } from '@/types/data';
 
 // 🔧 WEEK 2: Import your UploadProgressSimulator component here
 import UploadProgressSimulator from '@/components/UploadProgressSimulator';
-import Week3_Updates from '@/components/My_Week3_Updates';
+import Week3_Updates from '@/components/My_NameInput';
 //import { Upload, FileText, BarChart3, Brain, Zap, Database } from "lucide-react";
 //^^^^was having an error pop up once I added the line above
 
 // 🔧 WEEK 3+: Additional imports will be added as you progress
+import DataAnalyzer from '@/components/DataAnalyzer';
+
 
 const Index = () => {
   // 🧠 Component State - this is your component's memory!
@@ -79,7 +81,22 @@ const Index = () => {
         {/* <div className="mb-8">
           <UploadProgressSimulator />
         </div> */}
-          <Card className="bg-white/50 backdrop-blur-sm border-purple-200">
+        <Card className="bg-white/50 backdrop-blur-sm border-purple-200 mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <Upload className="mr-3 h-6 w-6 text-purple-600" />
+              Week 4 Updates
+            </CardTitle>
+            <CardDescription>
+              Building a React component that analyzes a data set and displays key statistics
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DataAnalyzer />
+          </CardContent>
+        </Card>
+
+        <Card className="bg-white/50 backdrop-blur-sm border-purple-200">
           <CardHeader>
             <CardTitle className="flex items-center">
               <Upload className="mr-3 h-6 w-6 text-purple-600" />
