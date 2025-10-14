@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 
-const Week2_Updates = () => {
+const Week3_Updates = () => {
 
     const COLORS = ["#f87171", "#60a5fa", "#34d399"];
 
@@ -141,7 +141,7 @@ const Week2_Updates = () => {
 };
 
 
-export default Week2_Updates;
+export default Week3_Updates;
 
 
 
