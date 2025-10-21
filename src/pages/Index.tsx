@@ -31,6 +31,10 @@ import Week3_Updates from '@/components/My_NameInput';
 // 🔧 WEEK 3+: Additional imports will be added as you progress
 import DataAnalyzer from '@/components/DataAnalyzer';
 
+//Week 5: Importing week 5 page
+import {useNavigate} from 'react-router-dom'; 
+
+
 
 const Index = () => {
   // 🧠 Component State - this is your component's memory!
@@ -44,6 +48,7 @@ const Index = () => {
     setFileName(name);
     console.log('Data loaded:', loadedData.length, 'rows');
   };
+  const navigate = useNavigate(); // For navigation to Week 5 Page
 
 
   return (
@@ -69,18 +74,13 @@ const Index = () => {
           <p className="text-sm text-slate-400 mt-2">
             Built with React, TypeScript, and Tailwind CSS. First time, let's do this!!!!!
           </p>
+          <div className = "mt-6 flex justify-center">
+            <Button onClick = {() => navigate('/week5-live')}>Open Week 5</Button> 
+          </div>
         </div>
         {/* 🆕 WEEK 3: Live Event Handling Demo (removed NameInput from homepage) */}
-        {/* <div className="mt-8 mb-8 flex justify-center">
-            <NameInput />
-          </div> */}
 
         {/* 🔧 WEEK 2: ADD YOUR PROGRESS COMPONENT HERE! */}
-        {/* This is where students will add their UploadProgressSimulator component */}
-        {/* Example: */}
-        {/* <div className="mb-8">
-          <UploadProgressSimulator />
-        </div> */}
         <Card className="bg-white/50 backdrop-blur-sm border-purple-200 mb-8">
           <CardHeader>
             <CardTitle className="flex items-center">
