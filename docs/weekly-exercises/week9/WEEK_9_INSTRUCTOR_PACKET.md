@@ -330,148 +330,185 @@ export function sum(a, b) {
 
 ---
 
-### 0:30 - 1:15: Build Comprehensive Test Cases (45 minutes)
-**Your Role**: Guide systematic test case creation
+### 0:30 - 1:15: Real-World Bug Hunt & Test Creation Workshop (45 minutes)
+**Your Role**: Facilitate active bug discovery and professional documentation
 
-#### **Phase 1: Test Case Design Workshop (20 minutes)**
+> **Philosophy**: Instead of writing theoretical test cases, students will actively break the application, then document their findings professionally. This builds both testing intuition and documentation skills simultaneously.
 
-**Student Task**: Create comprehensive test case documentation
+#### **Phase 1: "Try to Break It" Challenge (15 minutes)**
 
-**Create Test Case Template**:
+**🎯 Your Opening**: "For the next 15 minutes, your job is to try to BREAK the Data Discovery application at `/`. Upload weird files, click things rapidly, try edge cases. Document everything that breaks, crashes, or behaves unexpectedly. The team that finds the most legitimate bugs wins!"
+
+**Student Task**: Navigate to `/` and attempt to break the application using provided attack vectors
+
+**Provide Students With**: `BUG_HUNT_CHALLENGE.md` (see supporting materials)
+
+**Attack Vectors to Suggest**:
 ```markdown
-# Data Discovery Application - Test Cases
+1. **File Upload Chaos**
+   - Empty files
+   - Headers-only files
+   - Files with special characters (José, O'Brien, 李明)
+   - Malformed CSVs (missing quotes, extra columns)
+   - Huge numbers (999999999, -999999, 0.00000001)
+   - Non-CSV files renamed to .csv
 
-## Test Case Template
-**Test ID**: TC-001
-**Feature**: Data Upload
-**Scenario**: Upload valid CSV file
-**Priority**: High
-**Prerequisites**: Application is loaded and accessible
+2. **UI Stress Testing**
+   - Rapid clicking on buttons
+   - Upload file while previous upload in progress
+   - Browser back button during operations
+   - Resize window during chart rendering
+   - Zoom to 50% or 200%
 
-### Test Steps:
-1. Navigate to homepage
-2. Click "Upload Data" or drag zone
-3. Select valid CSV file with sample data
-4. Click "Upload" or complete drag-drop
+3. **Data Boundary Testing**
+   - Single row of data
+   - 1000+ rows of data
+   - Missing or null values
+   - Extremely long text strings
+   - Mixed data types in columns
 
-### Expected Results:
-- File uploads successfully
-- Progress indicator shows during upload
-- Data preview displays correctly
-- Dashboard becomes accessible
-- No error messages appear
+4. **Network & Performance**
+   - Simulate slow network (DevTools → Network → Slow 3G)
+   - Disconnect internet mid-upload
+   - Clear browser cache mid-session
+   - Open in incognito mode
+```
 
-### Test Data:
-- File: sample_data.csv (10 rows, 4 columns)
-- Expected columns: Name, Value, Date, Category
+**Your Role During This Phase**:
+- Circulate and observe what students are trying
+- Encourage creative destruction: "What happens if...?"
+- Keep energy high: "Anyone broken it yet?"
+- Keep time: "5 minutes left to find bugs!"
+
+**Expected Discoveries** (don't reveal these):
+- Empty CSV causes chart to crash
+- Special characters sometimes display incorrectly
+- Rapid clicking can trigger multiple uploads
+- Large datasets may freeze the browser
+- Some CSV parsing errors have unhelpful messages
 
 ---
 
-## Feature: Data Upload
-```
+#### **Phase 2: Convert Breaks into Test Cases (15 minutes)**
 
-**Student Task**: Complete test cases for all features
+**🎯 Your Transition**: "Great! You found bugs. Now let's document them like professionals. In QA, every bug needs a reproducible test case so developers can fix it reliably."
 
+**Student Task**: Select their top 3 bugs and convert them into professional test cases
+
+**Provide Students With**: `TEST_CASE_TEMPLATE.md` (see supporting materials)
+
+**Guide Students Through Conversion**:
+
+**From Bug Report → Test Case**
 ```markdown
-### TC-002: Empty CSV File
+❌ Student Might Write:
+"The app crashed when I uploaded a weird file"
+
+✅ Professional Test Case:
+**Test ID**: TC-UPLOAD-001
+**Feature**: Data Upload
 **Scenario**: Upload empty CSV file
-**Priority**: Medium
-**Steps**:
+**Priority**: High
+**Severity**: Critical (app crash)
+
+**Steps to Reproduce**:
 1. Create empty .csv file (0 bytes)
-2. Attempt to upload
-**Expected**: Clear error message "File appears to be empty"
+2. Navigate to homepage
+3. Drag empty file to upload zone
+4. Observe behavior
 
-### TC-003: Invalid File Format
-**Scenario**: Upload non-CSV file
-**Priority**: Medium
-**Steps**:
-1. Attempt to upload .txt or .jpg file
-**Expected**: Error message "Please upload a valid CSV file"
+**Expected Result**:
+- Display user-friendly error: "File appears to be empty"
+- Prevent upload
+- Application remains stable
 
-### TC-004: Large Dataset
-**Scenario**: Upload CSV with 1000+ rows
-**Priority**: High
-**Steps**:
-1. Create or obtain large CSV file
-2. Upload and monitor performance
-**Expected**: Handles gracefully, may show progress indicator
+**Actual Result**:
+- Application crashes
+- Console shows: [paste actual error]
+- User sees blank screen
 
-### TC-005: Special Characters in Data
-**Scenario**: CSV contains special characters and unicode
-**Priority**: Medium
-**Test Data**: Names like "José", "O'Brien", "Smith & Co."
-**Expected**: Displays correctly without corruption
-
-### TC-006: Malformed CSV
-**Scenario**: CSV with missing quotes, extra commas
-**Priority**: High
-**Expected**: Either parses correctly or shows helpful error
+**Test Data**: empty.csv (provided in SAMPLE_TEST_FILES)
+**Browser**: Chrome 120
+**Date**: 2024-10-24
 ```
 
-**Phase 1 Output**: Students create 15-20 test cases covering all application features
+**Facilitation Tips**:
+- Walk through first example together as a class
+- Emphasize: "Reproducible steps are everything"
+- Show them how to grab console errors (F12 → Console → Copy)
+- Teach them to categorize severity: Critical > High > Medium > Low
 
-#### **Phase 2: Edge Case Testing Lab (25 minutes)**
+**Common Mistakes to Watch For**:
+- ❌ Vague steps: "Click around"
+- ✅ Specific steps: "Click Upload button twice within 1 second"
+- ❌ No expected result: "It doesn't work"
+- ✅ Clear expectation: "Should display error message"
 
-**Your Role**: Facilitate systematic testing execution
+---
 
-**Testing Stations Setup**:
-1. **Data Quality Station**: Test various CSV formats and data types
-2. **Performance Station**: Test with large datasets and slow connections
-3. **UI/UX Station**: Test responsive design and user interactions
-4. **Error Handling Station**: Test network failures and invalid inputs
+#### **Phase 3: Prioritize & Propose Fixes (15 minutes)**
 
-**Student Activity**: Rotate through stations, executing test cases
+**🎯 Your Transition**: "Now you're thinking like QA engineers. But what should developers fix first? Let's prioritize and suggest solutions."
 
-**Data Quality Station Tests**:
-```csv
-# Create test files for students:
+**Student Task**: Rank their test cases and propose fixes
 
-# empty.csv (completely empty)
+**Prioritization Framework**:
+```markdown
+## Bug Prioritization Matrix
 
-# headers_only.csv
-Name,Value,Date,Category
-
-# single_row.csv
-Name,Value,Date,Category
-John,42,2024-01-01,A
-
-# large_values.csv
-Name,Value,Date,Category
-Test,-999999,2024-01-01,Category
-Test,999999999,2024-01-01,Category
-Test,0.00000001,2024-01-01,Category
-
-# special_chars.csv
-Name,Value,Date,Category
-José María,100,2024-01-01,España
-O'Brien & Associates,200,2024-01-01,Legal
-"Smith, Johnson & Co.",300,2024-01-01,"Business, Sales"
-李明,400,2024-01-01,亚洲
-
-# malformed.csv
-Name,Value,Date,Category
-John,42,2024-01-01,A
-Jane,Missing quote,2024-01-02,B
-Bob,56,2024-01-03,C,Extra,Columns
+| Severity | Frequency | Priority | Example |
+|----------|-----------|----------|---------|
+| Critical | High | P0 - Fix Now | App crashes on empty file upload |
+| Critical | Low | P1 - Fix Soon | App crashes on rare special character |
+| High | High | P1 - Fix Soon | Chart displays wrong data |
+| High | Low | P2 - Fix Later | Minor visual glitch on edge case |
+| Medium | High | P2 - Fix Later | Unhelpful error message |
+| Low | Any | P3 - Backlog | Typo in tooltip |
 ```
 
-**Performance Station Tests**:
-- Test with 1000-row CSV
-- Simulate slow network (Chrome DevTools Network → Slow 3G)
-- Test rapid clicking and multiple file uploads
-- Monitor browser memory usage
+**Student Activity**: Fill out prioritization for their bugs
 
-**UI/UX Station Tests**:
-- Test all screen sizes (mobile, tablet, desktop)
-- Test keyboard navigation through entire app
-- Test with browser zoom at 50%, 100%, 200%
-- Test color contrast and readability
+**Propose Fixes Section**:
+```markdown
+**Test Case**: TC-UPLOAD-001 (Empty CSV Crash)
+**Priority**: P0
 
-**Error Handling Station Tests**:
-- Disconnect internet during file upload
-- Test with browser JavaScript disabled
-- Test with browser back button during operations
-- Test clearing browser storage mid-session
+**Suggested Fix**:
+```javascript
+// Before upload, check file size
+if (file.size === 0) {
+  toast.error("File appears to be empty. Please upload a valid CSV.");
+  return;
+}
+```
+
+**Why This Works**: Prevents parsing empty files which crashes the chart library
+
+**Could We Prevent This?**: Add file validation before upload starts
+```
+
+**Class Discussion Questions**:
+- "Which bugs would frustrate users most?"
+- "Which bugs are easiest to fix?" (quick wins)
+- "What patterns do you see?" (common root causes)
+- "How could we prevent entire categories of bugs?"
+
+**Your Role**:
+- Facilitate debate about priorities
+- Share real-world QA decision-making
+- Connect bugs to user experience impact
+- Discuss prevention vs. detection
+
+---
+
+#### **Phase Output**:
+Students produce:
+- 3-5 professional test cases with real bugs they found
+- Prioritization matrix for their findings
+- Proposed fixes (code snippets or descriptions)
+- Reflection on prevention strategies
+
+**Transition to Next Section**: "You've just done the complete QA cycle: find bugs, document them, prioritize them, and propose fixes. This is exactly what professional QA teams do every day. Now let's look at how to create formal bug reports..."
 
 ---
 
