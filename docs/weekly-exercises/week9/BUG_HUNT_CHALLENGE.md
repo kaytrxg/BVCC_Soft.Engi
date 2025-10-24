@@ -15,25 +15,19 @@ Use these strategies to find bugs. Try to think creatively!
 
 ### 1. File Upload Chaos 📁
 
-Try uploading problematic files to see how the app handles edge cases:
+**🎯 Use the Sample Test Files Provided!**
+Navigate to `/docs/weekly-exercises/week9/SAMPLE_TEST_FILES/` and try uploading these pre-made problematic files:
 
-- **Empty file**: Create a `.csv` file with no content (0 bytes)
-- **Headers only**: CSV with just the header row, no data
-- **Special characters**: Files with names like `José María`, `O'Brien & Associates`, `李明`
-- **Malformed CSV**: 
-  - Missing quotes around text
-  - Extra commas
-  - Inconsistent column counts
-  - Mixed line endings
-- **Extreme values**:
-  - Huge numbers: `999999999`
-  - Negative numbers: `-999999`
-  - Tiny decimals: `0.00000001`
-  - Mixed text and numbers in same column
+- **`empty.csv`**: Zero-byte file (no content at all)
+- **`headers_only.csv`**: CSV with just the header row, no data
+- **`special_chars.csv`**: International characters like `José María`, `O'Brien & Associates`, `李明`
+- **`malformed.csv`**: Deliberately broken CSV with missing quotes, extra commas, inconsistent columns
+- **`huge_numbers.csv`**: Extreme values (999999999, -999999, 0.00000001)
+
+**Additional Tests to Try**:
 - **Wrong file type**: Rename a `.txt` or `.jpg` to `.csv` and try uploading
-- **Huge files**: CSV with 1000+ rows
-
-**Sample files provided**: Check `/docs/weekly-exercises/week9/SAMPLE_TEST_FILES/`
+- **Huge files**: Create a CSV with 1000+ rows
+- **Create your own**: Make custom problem files based on what you think might break the app
 
 ---
 

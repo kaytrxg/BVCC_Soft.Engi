@@ -344,14 +344,22 @@ export function sum(a, b) {
 **Provide Students With**: `BUG_HUNT_CHALLENGE.md` (see supporting materials)
 
 **Attack Vectors to Suggest**:
+
+**📁 Important**: Direct students to use the sample problematic files in `/docs/weekly-exercises/week9/SAMPLE_TEST_FILES/` which include:
+- `empty.csv` - Zero-byte file
+- `headers_only.csv` - Headers with no data rows
+- `special_chars.csv` - International characters and special symbols
+- `malformed.csv` - Deliberately broken CSV structure
+- `huge_numbers.csv` - Extreme numeric values
+
 ```markdown
 1. **File Upload Chaos**
-   - Empty files
-   - Headers-only files
-   - Files with special characters (José, O'Brien, 李明)
-   - Malformed CSVs (missing quotes, extra columns)
-   - Huge numbers (999999999, -999999, 0.00000001)
-   - Non-CSV files renamed to .csv
+   - Empty files (use `empty.csv` from SAMPLE_TEST_FILES)
+   - Headers-only files (use `headers_only.csv`)
+   - Files with special characters (use `special_chars.csv`)
+   - Malformed CSVs (use `malformed.csv` - missing quotes, extra columns)
+   - Huge numbers (use `huge_numbers.csv` - 999999999, -999999, 0.00000001)
+   - Non-CSV files renamed to .csv (create your own)
 
 2. **UI Stress Testing**
    - Rapid clicking on buttons
@@ -446,69 +454,116 @@ export function sum(a, b) {
 
 ---
 
-#### **Phase 3: Prioritize & Propose Fixes (15 minutes)**
+#### **Phase 3: Prioritize & Discuss Potential Fixes (15 minutes)**
 
-**🎯 Your Transition**: "Now you're thinking like QA engineers. But what should developers fix first? Let's prioritize and suggest solutions."
+**🎯 Your Transition**: "Now you're thinking like QA engineers. But what should developers fix first? Let's prioritize these bugs and discuss potential solutions. Note: You're NOT implementing fixes - you're proposing what could be done."
 
-**Student Task**: Rank their test cases and propose fixes
+**Student Task**: Rank their test cases by priority and discuss potential fixes (not implement)
 
 **Prioritization Framework**:
 ```markdown
 ## Bug Prioritization Matrix
 
-| Severity | Frequency | Priority | Example |
-|----------|-----------|----------|---------|
-| Critical | High | P0 - Fix Now | App crashes on empty file upload |
-| Critical | Low | P1 - Fix Soon | App crashes on rare special character |
-| High | High | P1 - Fix Soon | Chart displays wrong data |
-| High | Low | P2 - Fix Later | Minor visual glitch on edge case |
-| Medium | High | P2 - Fix Later | Unhelpful error message |
-| Low | Any | P3 - Backlog | Typo in tooltip |
+Use IMPACT × LIKELIHOOD to determine priority:
+
+| Impact     | Likelihood | Priority | Action      | Example |
+|------------|------------|----------|-------------|---------|
+| Critical   | High       | P0       | Fix Now     | App crashes on common file upload |
+| Critical   | Medium     | P0       | Fix Now     | Data loss on edge case |
+| Critical   | Low        | P1       | Fix Soon    | App crashes with rare input |
+| High       | High       | P1       | Fix Soon    | Major feature broken for most users |
+| High       | Medium     | P2       | Fix Later   | Chart displays wrong data sometimes |
+| High       | Low        | P2       | Fix Later   | Minor feature broken on edge case |
+| Medium     | High       | P2       | Fix Later   | Annoying UX issue affecting many users |
+| Medium     | Medium/Low | P3       | Backlog     | Minor inconvenience, rare occurrence |
+| Low        | Any        | P3       | Backlog     | Cosmetic issues, typos |
+
+**Severity Definitions:**
+- **Critical**: App crash, data loss, security issue, core feature completely broken
+- **High**: Major feature broken, bad user experience, significant data errors
+- **Medium**: Minor feature broken, workaround exists, confusing UX
+- **Low**: Cosmetic issues, typos, minor visual glitches
+
+**Likelihood Definitions:**
+- **High**: Affects >50% of users in normal usage
+- **Medium**: Affects 10-50% of users or common edge cases
+- **Low**: Affects <10% of users or very rare scenarios
 ```
 
 **Student Activity**: Fill out prioritization for their bugs
 
-**Propose Fixes Section**:
+**Discussion: Propose Potential Fixes**:
+
+**Guide Students Through This Process** (do NOT have them write code):
 ```markdown
 **Test Case**: TC-UPLOAD-001 (Empty CSV Crash)
 **Priority**: P0
+**Impact**: Critical | **Likelihood**: High
 
-**Suggested Fix**:
-```javascript
-// Before upload, check file size
-if (file.size === 0) {
-  toast.error("File appears to be empty. Please upload a valid CSV.");
-  return;
-}
+**Potential Fix Approach**:
+"Before the upload processes, we could check if the file size is 0 bytes. If it is, show a friendly error message and prevent the upload."
+
+**Pseudocode Example**:
+```
+if file.size equals 0:
+  show error "File appears to be empty"
+  stop upload process
 ```
 
-**Why This Works**: Prevents parsing empty files which crashes the chart library
+**Why This Would Work**: Prevents the CSV parser from trying to process an empty file
 
-**Could We Prevent This?**: Add file validation before upload starts
+**Prevention Strategy**: Add file validation as the first step in the upload flow
 ```
 
 **Class Discussion Questions**:
-- "Which bugs would frustrate users most?"
+- "Which bugs would frustrate users most?" (impact analysis)
+- "Which bugs happen most often?" (likelihood analysis)  
 - "Which bugs are easiest to fix?" (quick wins)
 - "What patterns do you see?" (common root causes)
-- "How could we prevent entire categories of bugs?"
+- "How could we prevent entire categories of bugs?" (systematic prevention)
+- "If you could only fix 3 bugs today, which ones and why?" (priority practice)
 
 **Your Role**:
-- Facilitate debate about priorities
-- Share real-world QA decision-making
+- Facilitate debate about priorities using the matrix
+- Share real-world QA decision-making stories
 - Connect bugs to user experience impact
-- Discuss prevention vs. detection
+- Emphasize: Students are learning to THINK about fixes, not write them (yet)
+- Help them understand the "why" behind prioritization
 
 ---
 
-#### **Phase Output**:
-Students produce:
-- 3-5 professional test cases with real bugs they found
-- Prioritization matrix for their findings
-- Proposed fixes (code snippets or descriptions)
-- Reflection on prevention strategies
+---
 
-**Transition to Next Section**: "You've just done the complete QA cycle: find bugs, document them, prioritize them, and propose fixes. This is exactly what professional QA teams do every day. Now let's look at how to create formal bug reports..."
+#### **✅ Expected Workshop Outcomes**
+
+By the end of this 45-minute workshop, students will have produced:
+
+1. **Bug Discovery Documentation**
+   - List of 5-10 bugs they found during testing
+   - Notes on how each bug was discovered
+   - Screenshots or console error messages as evidence
+
+2. **Professional Test Cases** (3-5 complete examples)
+   - Test ID and descriptive name
+   - Reproducible steps
+   - Expected vs. actual results
+   - Test data references (which sample CSV was used)
+   - Browser/environment details
+
+3. **Prioritization Analysis**
+   - Bugs categorized using the Priority Matrix
+   - Impact and likelihood ratings
+   - Justification for priority assignments
+
+4. **Fix Proposals** (conceptual, not code)
+   - Description of potential solution approach
+   - Why the fix would work
+   - Prevention strategies to avoid similar bugs
+
+**Transition to Next Section**: 
+"Excellent work! You've just completed the complete QA cycle that professional teams use every day: discover bugs through testing, document them systematically, prioritize by impact, and propose solutions. Now let's take your documentation skills to the next level with formal bug reporting..."
+
+---
 
 ---
 
@@ -559,11 +614,21 @@ What actually happens
 Any other relevant information
 ```
 
-**Student Task**: Document 3-5 bugs found during testing using this template
+**Student Task**: Convert 2-3 of their test cases into formal bug reports using this template
 
-#### **Bug Fixing Session (15 minutes)**
+---
 
-**Common Bug Categories & Solutions**:
+#### **Bug Fixing Demonstration (15 minutes)**
+**Your Role**: Live-code bug fixes to show implementation (instructor-led, students observe)
+
+> **Important**: This is an INSTRUCTOR DEMONSTRATION, not a student coding exercise. Students watch, ask questions, and learn the patterns. They do NOT implement these fixes themselves.
+
+**Your Setup**:
+- Share your screen with the codebase open
+- Have the bugs students found ready to demonstrate
+- Walk through fixes step-by-step with explanations
+
+**Common Bug Categories & Fix Demonstrations**:
 
 **1. Data Parsing Issues**
 ```javascript
