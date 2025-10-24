@@ -330,7 +330,7 @@ export function sum(a, b) {
 
 ---
 
-### 0:30 - 1:15: Real-World Bug Hunt & Test Creation Workshop (45 minutes)
+### 0:30 - 1:10: Real-World Bug Hunt & Test Creation Workshop (40 minutes)
 **Your Role**: Facilitate active bug discovery and professional documentation
 
 > **Philosophy**: Instead of writing theoretical test cases, students will actively break the application, then document their findings professionally. This builds both testing intuition and documentation skills simultaneously.
@@ -397,13 +397,15 @@ export function sum(a, b) {
 
 ---
 
-#### **Phase 2: Convert Breaks into Test Cases (15 minutes)**
+#### **Phase 2: Convert Breaks into Professional Test Cases (15 minutes)**
 
-**🎯 Your Transition**: "Great! You found bugs. Now let's document them like professionals. In QA, every bug needs a reproducible test case so developers can fix it reliably."
+**🎯 Your Transition**: "Great! You found bugs. Now let's document them like professionals. In QA, a well-written test case IS your bug report - it's the industry-standard way to communicate issues to developers. Master this format and you're speaking the language of professional QA teams."
 
 **Student Task**: Select their top 3 bugs and convert them into professional test cases
 
 **Provide Students With**: `TEST_CASE_TEMPLATE.md` (see supporting materials)
+
+**Key Message**: "Test cases aren't just for testing - they ARE your professional bug documentation. Every field serves a purpose: reproducible steps let developers fix it, severity/priority help teams decide what to fix first, and suggested fixes show you understand the system."
 
 **Guide Students Through Conversion**:
 
@@ -442,9 +444,10 @@ export function sum(a, b) {
 
 **Facilitation Tips**:
 - Walk through first example together as a class
-- Emphasize: "Reproducible steps are everything"
+- Emphasize: "Reproducible steps are everything - if a developer can't reproduce it, they can't fix it"
 - Show them how to grab console errors (F12 → Console → Copy)
 - Teach them to categorize severity: Critical > High > Medium > Low
+- Highlight: "This test case format is what you'd submit in a professional QA role - it includes everything: steps, expected/actual results, evidence, severity, priority, AND suggested fixes"
 
 **Common Mistakes to Watch For**:
 - ❌ Vague steps: "Click around"
@@ -530,66 +533,18 @@ By the end of this 40-minute workshop, students will have produced:
    - Justification for priority assignments
 
 **Transition to Next Section**: 
-"Excellent work! You've just completed the essential QA cycle that professional teams use every day: discover bugs through testing, document them systematically, and prioritize by impact. Now let's take your documentation skills to the next level with formal bug reporting..."
+"Excellent work! You've just completed the complete QA cycle that professional teams use: discover bugs, document them as comprehensive test cases, and prioritize by impact. The test cases you created are exactly what QA engineers submit to development teams - you're now speaking their language. Let's create a checklist to prevent these issues in the future..."
 
 ---
 
 ---
 
-### 1:15 - 1:30: Bug Documentation & Professional Reporting (15 minutes)
-**Your Role**: Teach professional bug reporting
+### 1:10 - 1:20: Quality Assurance Checklist Creation (10 minutes)
+**Your Role**: Help students build prevention mindset
 
-#### **Bug Report Workshop (10 minutes)**
+**🎯 Your Transition**: "You found bugs reactively. Now let's think proactively - how can we catch these BEFORE they reach users? Let's build a QA checklist you can use for every feature."
 
-**Professional Bug Report Template**:
-```markdown
-# Bug Report #001
-
-## Summary
-Brief, clear description of the issue
-
-## Environment
-- Browser: Chrome 119.0.0.0
-- OS: macOS 14.1
-- Screen Resolution: 1920x1080
-- Date/Time: 2024-01-15 14:30 PST
-
-## Steps to Reproduce
-1. Exact steps that lead to the bug
-2. Include test data used
-3. Be specific about user actions
-
-## Expected Behavior
-What should happen
-
-## Actual Behavior
-What actually happens
-
-## Screenshots/Evidence
-[Include screenshots, console errors, network logs]
-
-## Severity
-- Critical: App crashes, data loss
-- High: Major feature broken
-- Medium: Minor feature issue
-- Low: Cosmetic issue
-
-## Reproducibility
-- Always
-- Sometimes (X out of Y attempts)
-- Random
-
-## Additional Notes
-Any other relevant information
-```
-
-**Student Task**: Convert 2-3 of their test cases into formal bug reports using this template
-
----
-
-#### **Quality Assurance Checklist Creation (5 minutes)**
-
-**Student Task**: Create ongoing QA checklist
+**Student Task**: Create a pre-deployment QA checklist based on bugs they found
 
 ```markdown
 # Pre-Deployment QA Checklist
@@ -642,9 +597,11 @@ Any other relevant information
 - [ ] No XSS vulnerabilities with user input
 ```
 
+**Teaching Point**: "Every bug you found today should become a checklist item. If empty CSVs crashed the app, add '☐ Test with empty CSV' to your checklist. This is how professional teams prevent regressions."
+
 ---
 
-### 1:45 - 2:00: Testing Tools & Next Steps (15 minutes)
+### 1:20 - 1:35: Testing Tools & Next Steps (15 minutes)
 **Your Role**: Introduce automated testing concepts and deployment preparation
 
 #### **Testing Tools Overview (8 minutes)**
