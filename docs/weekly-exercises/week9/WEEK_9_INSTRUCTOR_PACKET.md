@@ -567,8 +567,8 @@ By the end of this 45-minute workshop, students will have produced:
 
 ---
 
-### 1:15 - 1:45: Bug Documentation & Resolution (30 minutes)
-**Your Role**: Teach professional bug reporting and fixing
+### 1:15 - 1:30: Bug Documentation & Professional Reporting (15 minutes)
+**Your Role**: Teach professional bug reporting
 
 #### **Bug Report Workshop (10 minutes)**
 
@@ -617,113 +617,6 @@ Any other relevant information
 **Student Task**: Convert 2-3 of their test cases into formal bug reports using this template
 
 ---
-
-#### **Bug Fixing Demonstration (15 minutes)**
-**Your Role**: Live-code bug fixes to show implementation (instructor-led, students observe)
-
-> **Important**: This is an INSTRUCTOR DEMONSTRATION, not a student coding exercise. Students watch, ask questions, and learn the patterns. They do NOT implement these fixes themselves.
-
-**Your Setup**:
-- Share your screen with the codebase open
-- Have the bugs students found ready to demonstrate
-- Walk through fixes step-by-step with explanations
-
-**Common Bug Categories & Fix Demonstrations**:
-
-**1. Data Parsing Issues**
-```javascript
-// Bug: App crashes with malformed CSV
-// Fix: Add try-catch and validation
-
-const parseCSV = (csvText) => {
-  try {
-    const lines = csvText.split('\n').filter(line => line.trim());
-    
-    if (lines.length === 0) {
-      throw new Error('File appears to be empty');
-    }
-    
-    if (lines.length === 1) {
-      throw new Error('File contains only headers, no data rows');
-    }
-    
-    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''));
-    const data = [];
-    
-    for (let i = 1; i < lines.length; i++) {
-      try {
-        const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''));
-        
-        if (values.length !== headers.length) {
-          console.warn(`Row ${i} has ${values.length} columns, expected ${headers.length}`);
-          // Skip malformed rows or pad with empty values
-          continue;
-        }
-        
-        const row = {};
-        headers.forEach((header, index) => {
-          row[header] = values[index] || '';
-        });
-        data.push(row);
-      } catch (rowError) {
-        console.warn(`Error parsing row ${i}:`, rowError);
-      }
-    }
-    
-    return { headers, data };
-  } catch (error) {
-    throw new Error(`CSV parsing failed: ${error.message}`);
-  }
-};
-```
-
-**2. Performance Issues**
-```javascript
-// Bug: App freezes with large datasets
-// Fix: Add pagination and virtualization
-
-const usePagination = (data, itemsPerPage = 100) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentData = data.slice(startIndex, endIndex);
-  
-  return {
-    currentData,
-    currentPage,
-    totalPages,
-    setCurrentPage,
-    hasNextPage: currentPage < totalPages,
-    hasPrevPage: currentPage > 1
-  };
-};
-```
-
-**3. Error Handling Improvements**
-```javascript
-// Bug: Network errors show technical messages
-// Fix: User-friendly error messages
-
-const handleError = (error) => {
-  let userMessage = 'Something went wrong. Please try again.';
-  
-  if (error.name === 'NetworkError') {
-    userMessage = 'Network connection issue. Please check your internet and try again.';
-  } else if (error.message.includes('CSV')) {
-    userMessage = 'There was a problem with your file. Please check the format and try again.';
-  } else if (error.message.includes('timeout')) {
-    userMessage = 'The operation took too long. Please try with a smaller file.';
-  }
-  
-  return {
-    userMessage,
-    technicalMessage: error.message,
-    timestamp: new Date().toISOString()
-  };
-};
-```
 
 #### **Quality Assurance Checklist Creation (5 minutes)**
 
