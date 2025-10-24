@@ -454,11 +454,11 @@ export function sum(a, b) {
 
 ---
 
-#### **Phase 3: Prioritize & Discuss Potential Fixes (15 minutes)**
+#### **Phase 3: Prioritize Bugs (10 minutes)**
 
-**🎯 Your Transition**: "Now you're thinking like QA engineers. But what should developers fix first? Let's prioritize these bugs and discuss potential solutions. Note: You're NOT implementing fixes - you're proposing what could be done."
+**🎯 Your Transition**: "Now you're thinking like QA engineers. But what should developers fix first? Let's prioritize these bugs using a professional framework."
 
-**Student Task**: Rank their test cases by priority and discuss potential fixes (not implement)
+**Student Task**: Rank their test cases using the prioritization matrix
 
 **Prioritization Framework**:
 ```markdown
@@ -492,42 +492,16 @@ Use IMPACT × LIKELIHOOD to determine priority:
 
 **Student Activity**: Fill out prioritization for their bugs
 
-**Discussion: Propose Potential Fixes**:
-
-**Guide Students Through This Process** (do NOT have them write code):
-```markdown
-**Test Case**: TC-UPLOAD-001 (Empty CSV Crash)
-**Priority**: P0
-**Impact**: Critical | **Likelihood**: High
-
-**Potential Fix Approach**:
-"Before the upload processes, we could check if the file size is 0 bytes. If it is, show a friendly error message and prevent the upload."
-
-**Pseudocode Example**:
-```
-if file.size equals 0:
-  show error "File appears to be empty"
-  stop upload process
-```
-
-**Why This Would Work**: Prevents the CSV parser from trying to process an empty file
-
-**Prevention Strategy**: Add file validation as the first step in the upload flow
-```
-
 **Class Discussion Questions**:
 - "Which bugs would frustrate users most?" (impact analysis)
 - "Which bugs happen most often?" (likelihood analysis)  
-- "Which bugs are easiest to fix?" (quick wins)
 - "What patterns do you see?" (common root causes)
-- "How could we prevent entire categories of bugs?" (systematic prevention)
 - "If you could only fix 3 bugs today, which ones and why?" (priority practice)
 
 **Your Role**:
 - Facilitate debate about priorities using the matrix
 - Share real-world QA decision-making stories
 - Connect bugs to user experience impact
-- Emphasize: Students are learning to THINK about fixes, not write them (yet)
 - Help them understand the "why" behind prioritization
 
 ---
@@ -536,7 +510,7 @@ if file.size equals 0:
 
 #### **✅ Expected Workshop Outcomes**
 
-By the end of this 45-minute workshop, students will have produced:
+By the end of this 40-minute workshop, students will have produced:
 
 1. **Bug Discovery Documentation**
    - List of 5-10 bugs they found during testing
@@ -555,13 +529,8 @@ By the end of this 45-minute workshop, students will have produced:
    - Impact and likelihood ratings
    - Justification for priority assignments
 
-4. **Fix Proposals** (conceptual, not code)
-   - Description of potential solution approach
-   - Why the fix would work
-   - Prevention strategies to avoid similar bugs
-
 **Transition to Next Section**: 
-"Excellent work! You've just completed the complete QA cycle that professional teams use every day: discover bugs through testing, document them systematically, prioritize by impact, and propose solutions. Now let's take your documentation skills to the next level with formal bug reporting..."
+"Excellent work! You've just completed the essential QA cycle that professional teams use every day: discover bugs through testing, document them systematically, and prioritize by impact. Now let's take your documentation skills to the next level with formal bug reporting..."
 
 ---
 
