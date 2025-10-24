@@ -28,7 +28,7 @@ By the end of this session, students will:
 - **IMPORTANT**: Do NOT show students the solution file yet!
 
 **Pre-Demo Preparation:**
-1. Share the "Bug Hunting Worksheet" (`docs/weekly-exercises/week9/BUG_HUNTING_WORKSHEET.md`) with all students (digital or printed)
+1. Share the "Bug Hunting Worksheet" (`docs/weekly-exercises/week9/broken-demo-challenge/WORKSHEET.md`) with all students (digital or printed)
 2. Open `/broken-demo` on your screen but don't interact yet
 3. Explain: "This component should let you display a sales chart, but it has multiple bugs"
 
@@ -341,11 +341,11 @@ export function sum(a, b) {
 
 **Student Task**: Navigate to `/` and attempt to break the application using provided attack vectors
 
-**Provide Students With**: `BUG_HUNT_CHALLENGE.md` (see supporting materials)
+**Provide Students With**: `data-discovery-bug-hunt/CHALLENGE.md` (see supporting materials)
 
 **Attack Vectors to Suggest**:
 
-**📁 Important**: Direct students to use the sample problematic files in `/docs/weekly-exercises/week9/SAMPLE_TEST_FILES/` which include:
+**📁 Important**: Direct students to use the sample problematic files in `/docs/weekly-exercises/week9/data-discovery-bug-hunt/sample-test-files/` which include:
 - `empty.csv` - Zero-byte file
 - `headers_only.csv` - Headers with no data rows
 - `special_chars.csv` - International characters and special symbols
@@ -403,7 +403,7 @@ export function sum(a, b) {
 
 **Student Task**: Select their top 3 bugs and convert them into professional test cases
 
-**Provide Students With**: `TEST_CASE_TEMPLATE.md` (see supporting materials)
+**Provide Students With**: `data-discovery-bug-hunt/TEST_CASE_TEMPLATE.md` (see supporting materials)
 
 **Key Message**: "Test cases aren't just for testing - they ARE your professional bug documentation. Every field serves a purpose: reproducible steps let developers fix it, severity/priority help teams decide what to fix first, and suggested fixes show you understand the system."
 

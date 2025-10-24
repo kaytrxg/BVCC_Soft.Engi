@@ -44,7 +44,7 @@ Work in teams to find 4 intentionally planted bugs in the `/broken-demo` compone
 **How It Works:**
 1. Form teams of 3-4 students
 2. Navigate to `/broken-demo` in the application
-3. Open and follow the `BUG_HUNTING_WORKSHEET.md`
+3. Open and follow the `broken-demo-challenge/WORKSHEET.md`
 4. Use systematic debugging to find all 4 bugs
 5. Document each bug with evidence
 
@@ -80,7 +80,7 @@ This warm-up exercise teaches you systematic debugging before the main workshop.
 - Look for suspicious code at the line numbers mentioned in errors
 - Check for undefined variables, incorrect data structures, or logic errors
 
-**Reference:** See `BUG_HUNTING_WORKSHEET.md` for the complete guided worksheet.
+**Reference:** See `broken-demo-challenge/WORKSHEET.md` for the complete guided worksheet.
 
 ---
 
@@ -255,8 +255,8 @@ Try to break the Data Discovery application by uploading problematic CSV files a
 
 **What You'll Need:**
 - The Data Discovery application (your main project)
-- Sample test files from `docs/weekly-exercises/week9/SAMPLE_TEST_FILES/`
-- `BUG_HUNT_CHALLENGE.md` for detailed instructions
+- Sample test files from `docs/weekly-exercises/week9/data-discovery-bug-hunt/sample-test-files/`
+- `data-discovery-bug-hunt/CHALLENGE.md` for detailed instructions
 - A document to track your findings
 
 **Attack Vectors to Try:**
@@ -351,7 +351,7 @@ App crashes with white screen. Console shows:
 Now you'll learn how real QA engineers communicate bugs to developers.
 
 **Your Mission:**
-Pick your 3-5 most important bugs and convert them into professional test cases using the TEST_CASE_TEMPLATE.md format.
+Pick your 3-5 most important bugs and convert them into professional test cases using the `data-discovery-bug-hunt/TEST_CASE_TEMPLATE.md` format.
 
 **Why This Matters:**
 In the professional world, a vague bug report like "it's broken" wastes everyone's time. A detailed test case helps developers:
