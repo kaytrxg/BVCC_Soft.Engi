@@ -36,15 +36,6 @@ const Dashboard = ({ data, fileName, onReset }: DashboardProps) => {
   // 🧠 Dashboard state management
   const [activeTab, setActiveTab] = useState('overview');
   
-  // 🔧 WEEK 4: Add data processing state here
-  // Example: const [filteredData, setFilteredData] = useState(data);
-  
-  // 🔧 WEEK 5: Add file handling state here
-  // Example: const [exportFormat, setExportFormat] = useState('csv');
-  
-  // 🔧 WEEK 6: Add chart customization state here
-  // Example: const [chartConfig, setChartConfig] = useState({});
-  
   // 🔧 WEEK 7: Add API integration state here
   // Example: const [externalData, setExternalData] = useState([]);
   
@@ -241,7 +232,7 @@ ${Object.entries(summary.columnTypes)
               <ChartSection data={data} />
             </div>
             <div className="xl:col-span-1">
-              <InsightsPanel insights={insights.slice(0, 6)} />
+              <InsightsPanel insights={insights.slice(0, 6)} data={data} />
             </div>
           </div>
         </TabsContent>
@@ -251,7 +242,7 @@ ${Object.entries(summary.columnTypes)
         </TabsContent>
 
         <TabsContent value="insights">
-          <InsightsPanel insights={insights} showAll />
+          <InsightsPanel insights={insights} showAll data={data} />
         </TabsContent>
 
         <TabsContent value="chat">

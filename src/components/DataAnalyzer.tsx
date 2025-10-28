@@ -5,8 +5,20 @@ import { Button } from './ui/button';
 export const AllDatasales = [
         {name: '2023 Sales', year: 2023, data: [65,85,75,95,110,125,80,140,120,150,145,200]},
         {name: '2024 Sales', year: 2024, data: [70,100,80,100,75,85,135,145,95,155,175,210]},
-        {name: '2025 Sales', year: 2025, data: [80,90,85,110,95,105,125,150,130,160,180,220]},
+        {name: '2025 Sales', year: 2025, data: [80,90,85,110,"apple",105,125,150,130,160,180,220]},
     ];
+    // Exportable validation helper for other components to reuse
+    // Returns a string error message when invalid, or null when valid.
+    export const validateArray = (arr: any[]): string | null => {
+        if (!arr || arr.length === 0) return 'No data selected to validate';
+        const invalid = arr.map((v, i) => ({ v, i })).filter(item => typeof item.v !== 'number' || Number.isNaN(item.v));
+        if (invalid.length > 0) {
+            const indices = invalid.map(x => x.i).join(', ');
+            const examples = invalid.slice(0, 3).map(x => `${x.i}: ${JSON.stringify(x.v)}`).join('; ');
+            return `Non-numeric values at index(es) ${indices}. Examples: ${examples}`;
+        }
+        return null;
+    };
 const DataAnalyzer = () => {
     //const sampleData = [23, 45, 67, 89, 34, 56, 78, 90, 75, 45, 67, 89];
     const [analysis, setAnalysis] = useState(null);
@@ -55,7 +67,7 @@ const DataAnalyzer = () => {
     // Calculate statistics
     const data = getCurrentArray();
     //Want to add the datasets, with the option/select being displayed for users
-    const validNumbers = data.filter(num => typeof num === 'number' && !isNaN(num));
+    const validNumbers = data.filter((num): num is number => typeof num === 'number' && !isNaN(num));
     if (validNumbers.length === 0) {
         setAnalysis({error: "No valid numbers to analyze"});
         return;
@@ -109,6 +121,8 @@ const DataAnalyzer = () => {
         setError("");
         return true
     };
+
+    // (validation helper is exported at module scope)
 
     return (
         <div> 
