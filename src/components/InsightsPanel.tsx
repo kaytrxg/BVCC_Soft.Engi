@@ -1,5 +1,4 @@
-
-import { TrendingUp, AlertTriangle, BarChart3, Info } from 'lucide-react';
+import { TrendingUp, AlertTriangle, BarChart3, Info } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DataInsight, DataRow } from '@/types/data';
@@ -7,12 +6,15 @@ import { Button } from './ui/button';
 import {useState} from "react";
 import ReactMarkdown from 'react-markdown';
 
+import { DataInsight, DataRow } from "@/types/data";
+import { Button } from "./ui/button";
+import { useState } from "react";
 
 // 📊 Week 4-5: Smart Data Insights - Bringing Your Data to Life
 // Students - Transform raw data into meaningful stories! This component showcases professional data presentation patterns.
-// 
+//
 // Journey milestone: You've learned React basics (Weeks 1-3), now master data analysis and visualization!
-// 
+//
 // Learning objectives:
 // - Build intelligent data analysis systems
 // - Create engaging, accessible user interfaces
@@ -233,23 +235,32 @@ const InsightsPanel = ({ data, insights, showAll = false }: InsightsPanelProps) 
           
           The 'key' prop is important for React's performance optimization
           */}
-          {insights.map((insight, index) => (
-            <div key={index} className="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
-              {/* TODO: Week 4 - Add click handler to expand insight details */}
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex items-start gap-3 flex-1">
-                  {/* 🟢 EASY - Week 3: Dynamic Icon and Styling */}
-                  {/* Using our helper functions to get the right icon and colors */}
-                  <div className={`p-2 rounded-full ${getInsightColor(insight.type)}`}>
-                    {getInsightIcon(insight.type)}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-gray-900 mb-1">{insight.title}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{insight.description}</p>
-                    
-                    {/* 🟡 MEDIUM - Week 4: Conditional Rendering */}
-                    {/* TODO: Students - When and why do we use conditional rendering? */}
-                    {/* 
+					{insights.map((insight, index) => (
+						<div
+							key={index}
+							className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+						>
+							{/* TODO: Week 4 - Add click handler to expand insight details */}
+							<div className="flex items-start justify-between gap-3">
+								<div className="flex items-start gap-3 flex-1">
+									{/* 🟢 EASY - Week 3: Dynamic Icon and Styling */}
+									{/* Using our helper functions to get the right icon and colors */}
+									<div
+										className={`p-2 rounded-full ${getInsightColor(insight.type)}`}
+									>
+										{getInsightIcon(insight.type)}
+									</div>
+									<div className="flex-1">
+										<h4 className="font-medium text-gray-900 mb-1">
+											{insight.title}
+										</h4>
+										<p className="text-sm text-gray-600 mb-2">
+											{insight.description}
+										</p>
+
+										{/* 🟡 MEDIUM - Week 4: Conditional Rendering */}
+										{/* TODO: Students - When and why do we use conditional rendering? */}
+										{/* 
                     What's happening here:
                     - Not all insights have a 'value' field
                     - We only want to show the badge if there IS a value
@@ -262,19 +273,19 @@ const InsightsPanel = ({ data, insights, showAll = false }: InsightsPanelProps) 
                     
                     Try this: What happens if you remove the conditional check?
                     */}
-                    {insight.value && (
-                      <Badge variant="secondary" className="text-xs">
-                        {insight.value}
-                      </Badge>
-                    )}
-                    
-                    {/* TODO: Week 5 - Add action buttons (explore, dismiss, share) */}
-                  </div>
-                </div>
-                
-                {/* 🟡 MEDIUM - Week 4: Confidence Score Display */}
-                {/* TODO: Students - How do confidence scores help users trust insights? */}
-                {/* 
+										{insight.value && (
+											<Badge variant="secondary" className="text-xs">
+												{insight.value}
+											</Badge>
+										)}
+
+										{/* TODO: Week 5 - Add action buttons (explore, dismiss, share) */}
+									</div>
+								</div>
+
+								{/* 🟡 MEDIUM - Week 4: Confidence Score Display */}
+								{/* TODO: Students - How do confidence scores help users trust insights? */}
+								{/* 
                 What's happening here:
                 - AI-generated insights have confidence scores (0-1)
                 - We convert to percentage (0.85 becomes 85%)
@@ -287,21 +298,21 @@ const InsightsPanel = ({ data, insights, showAll = false }: InsightsPanelProps) 
                 
                 Real-world example: Weather apps show confidence in forecasts
                 */}
-                {insight.confidence && (
-                  <Badge variant="outline" className="text-xs">
-                    {insight.confidence} confidence
-                  </Badge>
-                )}
-              </div>
-              
-              {/* TODO: Week 5 - Add expandable details section */}
-              {/* TODO: Week 6 - Add related charts or visualizations */}
-            </div>
-          ))}
-          
-          {/* 🟢 EASY - Week 4: Pagination/Truncation Logic */}
-          {/* TODO: Students - Understand user experience for long lists */}
-          {/* 
+								{insight.confidence && (
+									<Badge variant="outline" className="text-xs">
+										{insight.confidence} confidence
+									</Badge>
+								)}
+							</div>
+
+							{/* TODO: Week 5 - Add expandable details section */}
+							{/* TODO: Week 6 - Add related charts or visualizations */}
+						</div>
+					))}
+
+					{/* 🟢 EASY - Week 4: Pagination/Truncation Logic */}
+					{/* TODO: Students - Understand user experience for long lists */}
+					{/* 
           What's happening here:
           - If there are more than 4 insights and we're not showing all
           - We display a message about how many more are available
@@ -314,40 +325,41 @@ const InsightsPanel = ({ data, insights, showAll = false }: InsightsPanelProps) 
           
           Real-world example: Google shows 10 results per page, not 1000
           */}
-          {!showAll && insights.length > 4 && (
-            <div className="text-center pt-4">
-              <p className="text-sm text-gray-500">
-                {insights.length - 4} more insights available in the Insights tab
-              </p>
-              {/* TODO: Week 5 - Add "Show More" button */}
-            </div>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  );
+					{!showAll && insights.length > 4 && (
+						<div className="text-center pt-4">
+							<p className="text-sm text-gray-500">
+								{insights.length - 4} more insights available in the Insights
+								tab
+							</p>
+							{/* TODO: Week 5 - Add "Show More" button */}
+						</div>
+					)}
+				</div>
+			</CardContent>
+		</Card>
+	);
 };
 
 export default InsightsPanel;
 
 // 🔴 ADVANCED - Week 6-8: Component Enhancement Ideas
 // TODO: Students - Pick advanced features to implement:
-// 
+//
 // 1. Interactive Insights
 //    - Click to explore insight in detail
 //    - Generate related charts on demand
 //    - Filter data based on insight
-// 
+//
 // 2. Insight Management
 //    - Save/bookmark important insights
 //    - Share insights with others
 //    - Export insights to reports
-// 
+//
 // 3. Advanced Analytics
 //    - Trend prediction
 //    - Comparative analysis
 //    - Statistical significance testing
-// 
+//
 // 4. User Customization
 //    - Choose which insight types to show
 //    - Set confidence thresholds
