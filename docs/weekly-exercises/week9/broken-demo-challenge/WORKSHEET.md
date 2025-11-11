@@ -54,13 +54,9 @@ Now interact with the component. Test everything!
 
 
 ### Step 3: Console Investigation (3 minutes)
-Open Chrome DevTools (F12) and check the Console tab.
-- What error messages do you see?
-- What line numbers are mentioned?
-- What does the error message tell you?
 
 **Console findings:**
-Find and document all 5 bugs in the BrokenDemo component at `/broken-demo` (Visual, Runtime, Logic, Edge Case, and UI/UX)
+Find and document all 5 bugs in the BrokenDemo component at `pages/broken-demo` (Visual, Runtime, Logic, Edge Case, and UI/UX)
 _____________________
 | Bug # | Line # | Type | What's Wrong | Your Proposed Fix |
 |-------|--------|------|--------------|-------------------|
@@ -69,8 +65,24 @@ _____________________
 | 3     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
 | 4     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
 | 5     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
-- Where do you think the bugs are? (line numbers)
-Rank these bugs from most to least severe:
+ Open Chrome DevTools (F12) and check the Console tab.
+ - Are there any error messages or warnings? (Note: The BrokenDemo component does not produce console logs, but always check for errors as part of systematic debugging.)
+ - What line numbers are mentioned, if any?
+ - What does the error message tell you?
+
+ **Console findings:**
+ If you do not see any console logs or errors, note that as part of your investigation. Not all bugs will produce console output, but checking is a key QA habit.
+ _____________________
+ | Bug # | Line # | Type | What's Wrong | Your Proposed Fix |
+ |-------|--------|------|--------------|-------------------|
+ | 1     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
+ | 2     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
+ | 3     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
+ | 4     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
+ | 5     |        | Visual / Logic / Runtime / Edge Case / UI/UX |              |                   |
+
+ Where do you think the bugs are? (line numbers)
+ Rank these bugs from most to least severe:
 
 1. **Most Critical:** _______________ 
    - **Why?** _______________
